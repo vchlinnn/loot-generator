@@ -1,0 +1,40 @@
+package edu.grinnell.csc207.lootgenerator.GameDataStructures;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+
+import edu.grinnell.csc207.lootgenerator.GameObjects.Monster;
+
+public class MonsterData {
+    private List<Monster> monsterData;
+    private int size;
+    
+    public MonsterData() throws IOException {
+        this.monsterData = new ArrayList<>();
+        Scanner text = new Scanner(new File("data/small/monstats.txt"));
+        while (text.hasNextLine()) {
+            String line = text.nextLine();
+            String[] words = line.split(" ");
+            String treasureClass = "";
+            for (int i = 3; i < words.length; i++) {
+                treasureClass += words[i];
+            }
+            String monsterName = words[0];
+            Monster monster = new Monster(monsterName, treasureClass);
+            monsterData.add(monster);
+            size += 1;
+        }
+        text.close();
+    }
+
+    public List<Monster> getData(){
+        return monsterData;
+    }
+
+    public int getSize(){
+        return size;
+    }
+}

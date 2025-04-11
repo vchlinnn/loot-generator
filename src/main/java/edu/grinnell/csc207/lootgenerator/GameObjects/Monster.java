@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.lootgenerator.NewObjects;
+package edu.grinnell.csc207.lootgenerator.GameObjects;
 
 public class Monster {
     // Class treasureclass
