@@ -3,6 +3,7 @@ package edu.grinnell.csc207.lootgenerator.GameObjects;
 public class TreasureClass {
     private String treasureClass;
     private String[] drops;
+    private boolean isBaseItem;
 
     public TreasureClass(String treasureClass){
         this.treasureClass = treasureClass;
@@ -15,5 +16,9 @@ public class TreasureClass {
 
     public String[] getDrops(){
         return drops;
+    }
+
+    public boolean isBaseItem() {
+        return false;
     }
 }
