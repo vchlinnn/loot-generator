@@ -5,6 +5,7 @@ import java.util.Random;
 
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.ArmorData;
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.MonsterData;
+import edu.grinnell.csc207.lootgenerator.GameDataStructures.PrefixData;
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.TreasureClassData;
 
 public class LootGenerator {
@@ -13,14 +14,18 @@ public class LootGenerator {
     MonsterData monsterData;
     TreasureClassData treasureData;
     ArmorData armorData;
+    PrefixData prefixData;
     int randIndex;
+    int affixRand;
 
     public LootGenerator() throws IOException{
         this.monsterData = new MonsterData();
         this.treasureData = new TreasureClassData();
         this.armorData = new ArmorData();
+        this.prefixData = new PrefixData();
         Random random = new Random();
         this.randIndex = random.nextInt(monsterData.getSize());
+        this.affixRand = random.nextInt(prefixData.getSize());
     }
     
     public static void main(String[] args) throws IOException {
@@ -29,18 +34,18 @@ public class LootGenerator {
         String treasureClassName = game.fetchTreasureClass();
         String baseItem = game.generateBaseItem(treasureClassName);
         int baseStats = game.generateBaseStats(baseItem);
+        String prefix = game.generatePrefix();
+        int value = game.prefixData.getValue(game.affixRand);
+        String stats = game.prefixData.getStatisticsText(game.affixRand);
         
         System.out.println("This program kills monsters and generates loot!");
         System.out.println("Fighting " + monster);
         System.out.println("You have slain " + monster);
         System.out.println(monster + " dropped:");
         System.out.println("\n");
-        System.out.println(baseItem);
+        System.out.println(prefix + " " + baseItem);
         System.out.println("Defense: " + baseStats);
-        // MonsterData data = new MonsterData();
-        // System.out.println(data.getMonsterName(0)); // index is random
-        // System.out.println(data.getTreasureClassName(0)); // index is random
-        // System.out.println(data.getSize());
+        System.out.println(value + " " + stats);
     }
 
     public String pickMonster() {
@@ -70,8 +75,8 @@ public class LootGenerator {
         return armorData.getBaseStats(item);
     }
 
-    // public String generateAffix(){
-
-    // }
+    public String generatePrefix(){
+        return prefixData.getPrefix(affixRand);
+    }
 
 }

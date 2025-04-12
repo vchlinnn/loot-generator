@@ -1,7 +1,6 @@
 package edu.grinnell.csc207.lootgenerator.GameObjects;
 
 public class Monster {
-    // Class treasureclass
     private String monsterClass;
     private String treasureClass;
 
