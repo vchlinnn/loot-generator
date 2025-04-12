@@ -10,6 +10,7 @@ Authors: Linh Vu
 - https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
 - https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 - https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+- https://docs.oracle.com/javase/7/docs/api/java/util/Map.html
 
 ## Revision Log
 
