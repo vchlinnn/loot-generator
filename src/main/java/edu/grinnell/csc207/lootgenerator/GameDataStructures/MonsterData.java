@@ -17,7 +17,7 @@ public class MonsterData {
         Scanner text = new Scanner(new File("data/small/monstats.txt"));
         while (text.hasNextLine()) {
             String line = text.nextLine();
-            String[] words = line.split(" ");
+            String[] words = line.split("\t");
             String treasureClass = "";
             for (int i = 3; i < words.length; i++) {
                 treasureClass += words[i];
@@ -30,10 +30,14 @@ public class MonsterData {
         text.close();
     }
 
-    public List<Monster> getData(){
-        return monsterData;
+    public String getMonsterName(int index){
+        return monsterData.get(index).getMonsterClass();
     }
 
+    public String getTreasureClassName(int index){
+        return monsterData.get(index).getTreasureClass();
+    }
+    
     public int getSize(){
         return size;
     }
