@@ -23,10 +23,15 @@ public class TreasureClassData {
         text.close();
     }
 
-    public String getTreasureDrop(String treasureClassName){
+    public String getTreasureDrop(String treasureClassName){ // Return a random drop
         Random random = new Random();
         String[] listDrops =  treasureClassData.get(treasureClassName);
         return listDrops[random.nextInt(3)];
     }
 
+    public boolean isTreasureClass(String item) {
+        return treasureClassData.containsKey(item);
+    }
+
+    
 }
