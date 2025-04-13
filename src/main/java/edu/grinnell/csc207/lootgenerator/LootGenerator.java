@@ -42,7 +42,6 @@ public class LootGenerator {
         System.out.println("Fighting " + monster);
         System.out.println("You have slain " + monster);
         System.out.println(monster + " dropped:");
-        System.out.println("\n");
         System.out.println(prefix + " " + baseItem);
         System.out.println("Defense: " + baseStats);
         System.out.println(value + " " + stats);

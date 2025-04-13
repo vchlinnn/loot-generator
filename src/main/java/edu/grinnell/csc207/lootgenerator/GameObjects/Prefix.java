@@ -11,6 +11,8 @@ public class Prefix {
     public Prefix(String prefix, String statisticText, int mod1min, int mod1max){
         this.prefix = prefix;
         this.statisticText = statisticText;
+        this.mod1min = mod1min;
+        this.mod1max = mod1max;
     }
 
     public String getPrefix(){
