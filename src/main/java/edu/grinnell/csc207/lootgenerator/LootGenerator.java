@@ -5,7 +5,7 @@ import java.util.Random;
 
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.ArmorData;
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.MonsterData;
-import edu.grinnell.csc207.lootgenerator.GameDataStructures.PrefixData;
+import edu.grinnell.csc207.lootgenerator.GameDataStructures.AffixData;
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.TreasureClassData;
 
 public class LootGenerator {
@@ -14,18 +14,19 @@ public class LootGenerator {
     MonsterData monsterData;
     TreasureClassData treasureData;
     ArmorData armorData;
-    PrefixData prefixData;
+    AffixData prefixData;
+    AffixData suffixData;
     int randIndex;
-    int affixRand;
+    Random random;
 
     public LootGenerator() throws IOException{
         this.monsterData = new MonsterData(DATA_SET);
         this.treasureData = new TreasureClassData(DATA_SET);
         this.armorData = new ArmorData(DATA_SET);
-        this.prefixData = new PrefixData(DATA_SET);
-        Random random = new Random();
+        this.prefixData = new AffixData(DATA_SET + "/MagicPrefix.txt");
+        this.suffixData = new AffixData(DATA_SET + "/MagicSuffix.txt");
+        this.random = new Random();
         this.randIndex = random.nextInt(monsterData.getSize());
-        this.affixRand = random.nextInt(prefixData.getSize());
     }
     
     public static void main(String[] args) throws IOException {
@@ -34,17 +35,16 @@ public class LootGenerator {
         String treasureClassName = game.fetchTreasureClass();
         String baseItem = game.generateBaseItem(treasureClassName);
         int baseStats = game.generateBaseStats(baseItem);
-        String prefix = game.generatePrefix();
-        int value = game.prefixData.getValue(game.affixRand);
-        String stats = game.prefixData.getStatisticsText(game.affixRand);
+        String fullName = game.generateAffix(baseItem)[0];
+        String additionalStats = game.generateAffix(baseItem)[1];
         
         System.out.println("This program kills monsters and generates loot!");
         System.out.println("Fighting " + monster);
         System.out.println("You have slain " + monster);
         System.out.println(monster + " dropped:");
-        System.out.println(prefix + " " + baseItem);
+        System.out.println(fullName);
         System.out.println("Defense: " + baseStats);
-        System.out.println(value + " " + stats);
+        System.out.print(additionalStats);
     }
 
     public String pickMonster() {
@@ -74,8 +74,31 @@ public class LootGenerator {
         return armorData.getBaseStats(item);
     }
 
-    public String generatePrefix(){
-        return prefixData.getPrefix(affixRand);
+    public String[] generateAffix(String baseItem){
+        String additionalStats = "";
+        if (random.nextInt(1) == 0) { // yes prefix
+            // Prefix + baseitem
+            int prefixRand = random.nextInt(prefixData.getSize());
+            String prefix = prefixData.getAffix(prefixRand);
+            baseItem = prefix + " " + baseItem;
+            // Additional stats
+            int value = prefixData.getValue(prefixRand);
+            String stats = prefixData.getStatisticsText(prefixRand);
+            additionalStats = value + " " + stats + "\n";
+        }
+
+        if (random.nextInt(1) == 0) { // yes suffix
+            // Suffix + baseitem
+            int suffixRand = random.nextInt(suffixData.getSize());
+            String suffix = suffixData.getAffix(suffixRand);
+            baseItem = baseItem + " " + suffix;
+            // Additional stats
+            int value = suffixData.getValue(suffixRand);
+            String stats = suffixData.getStatisticsText(suffixRand);
+            additionalStats = additionalStats + value + " " + stats + "\n";
+        }
+
+        return new String[] {baseItem, additionalStats};
     }
 
 }

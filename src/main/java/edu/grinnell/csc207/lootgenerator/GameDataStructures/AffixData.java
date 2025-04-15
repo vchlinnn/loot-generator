@@ -4,39 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import edu.grinnell.csc207.lootgenerator.GameObjects.Prefix;
+import edu.grinnell.csc207.lootgenerator.GameObjects.Affix;
 
 import java.io.File;
 import java.io.IOException;
-public class PrefixData {
-    private List<Prefix> prefixData;
+
+public class AffixData {
+    private List<Affix> affixData;
     private int size;
     
-    public PrefixData(String DATA_SET) throws IOException {
-        this.prefixData = new ArrayList<>();
-        Scanner text = new Scanner(new File(DATA_SET + "/MagicPrefix.txt"));
+    public AffixData(String dataPath) throws IOException {
+        this.affixData = new ArrayList<>();
+        Scanner text = new Scanner(new File(dataPath));
         while (text.hasNextLine()) {
             String line = text.nextLine();
             String[] words = line.split("\t");
-            Prefix prefix = new Prefix(words[0], words[1], 
+            Affix affix = new Affix(words[0], words[1], 
                                         Integer.parseInt(words[2]), 
                                         Integer.parseInt(words[3]));
-            prefixData.add(prefix);
+            affixData.add(affix);
             size += 1;
         }
         text.close();
     }
 
-    public String getPrefix(int index){
-        return prefixData.get(index).getPrefix();
+    public String getAffix(int index){
+        return affixData.get(index).getAffix();
     }
 
     public String getStatisticsText(int index){
-        return prefixData.get(index).getStatisticText();
+        return affixData.get(index).getStatisticText();
     }
     
     public int getValue(int index){
-        return prefixData.get(index).getValue();
+        return affixData.get(index).getValue();
     }
 
     public int getSize(){
