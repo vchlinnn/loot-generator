@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class TreasureClassData {
     private Map<String, String[]> treasureClassData;
     
-    public TreasureClassData() throws IOException {
+    public TreasureClassData(String DATA_SET) throws IOException {
         this.treasureClassData = new HashMap<>();
-        Scanner text = new Scanner(new File("data/small/TreasureClassEx.txt"));
+        Scanner text = new Scanner(new File(DATA_SET + "/TreasureClassEx.txt"));
         while (text.hasNextLine()) {
             String line = text.nextLine();
             String[] words = line.split("\t");

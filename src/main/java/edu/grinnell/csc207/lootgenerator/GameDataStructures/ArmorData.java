@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class ArmorData {
     private Map<String, Integer> armorData;
     
-    public ArmorData() throws IOException {
+    public ArmorData(String DATA_SET) throws IOException {
         this.armorData = new HashMap<>();
-        Scanner text = new Scanner(new File("data/small/armor.txt"));
+        Scanner text = new Scanner(new File(DATA_SET + "/armor.txt"));
         while (text.hasNextLine()) {
             Random random = new Random();
             String line = text.nextLine();

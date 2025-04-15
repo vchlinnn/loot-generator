@@ -12,9 +12,9 @@ public class PrefixData {
     private List<Prefix> prefixData;
     private int size;
     
-    public PrefixData() throws IOException {
+    public PrefixData(String DATA_SET) throws IOException {
         this.prefixData = new ArrayList<>();
-        Scanner text = new Scanner(new File("data/small/MagicPrefix.txt"));
+        Scanner text = new Scanner(new File(DATA_SET + "/MagicPrefix.txt"));
         while (text.hasNextLine()) {
             String line = text.nextLine();
             String[] words = line.split("\t");

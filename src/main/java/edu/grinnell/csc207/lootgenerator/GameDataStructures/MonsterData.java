@@ -12,9 +12,9 @@ public class MonsterData {
     private List<Monster> monsterData;
     private int size;
     
-    public MonsterData() throws IOException {
+    public MonsterData(String DATA_SET) throws IOException {
         this.monsterData = new ArrayList<>();
-        Scanner text = new Scanner(new File("data/small/monstats.txt"));
+        Scanner text = new Scanner(new File(DATA_SET + "/monstats.txt"));
         while (text.hasNextLine()) {
             String line = text.nextLine();
             String[] words = line.split("\t");

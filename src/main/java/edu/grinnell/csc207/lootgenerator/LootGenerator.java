@@ -19,10 +19,10 @@ public class LootGenerator {
     int affixRand;
 
     public LootGenerator() throws IOException{
-        this.monsterData = new MonsterData();
-        this.treasureData = new TreasureClassData();
-        this.armorData = new ArmorData();
-        this.prefixData = new PrefixData();
+        this.monsterData = new MonsterData(DATA_SET);
+        this.treasureData = new TreasureClassData(DATA_SET);
+        this.armorData = new ArmorData(DATA_SET);
+        this.prefixData = new PrefixData(DATA_SET);
         Random random = new Random();
         this.randIndex = random.nextInt(monsterData.getSize());
         this.affixRand = random.nextInt(prefixData.getSize());
