@@ -2,6 +2,7 @@ package edu.grinnell.csc207.lootgenerator;
 
 import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.ArmorData;
 import edu.grinnell.csc207.lootgenerator.GameDataStructures.MonsterData;
@@ -18,6 +19,7 @@ public class LootGenerator {
     AffixData suffixData;
     int randIndex;
     Random random;
+    Scanner scanner;
 
     public LootGenerator() throws IOException{
         this.monsterData = new MonsterData(DATA_SET);
@@ -27,24 +29,37 @@ public class LootGenerator {
         this.suffixData = new AffixData(DATA_SET + "/MagicSuffix.txt");
         this.random = new Random();
         this.randIndex = random.nextInt(monsterData.getSize());
+        this.scanner = new Scanner(System.in);
     }
     
     public static void main(String[] args) throws IOException {
-        LootGenerator game = new LootGenerator();
-        String monster = game.pickMonster();
-        String treasureClassName = game.fetchTreasureClass();
-        String baseItem = game.generateBaseItem(treasureClassName);
-        int baseStats = game.generateBaseStats(baseItem);
-        String fullName = game.generateAffix(baseItem)[0];
-        String additionalStats = game.generateAffix(baseItem)[1];
-        
-        System.out.println("This program kills monsters and generates loot!");
-        System.out.println("Fighting " + monster);
-        System.out.println("You have slain " + monster);
-        System.out.println(monster + " dropped:");
-        System.out.println(fullName);
-        System.out.println("Defense: " + baseStats);
-        System.out.print(additionalStats);
+        boolean playing = true;
+        while (playing) {
+            LootGenerator game = new LootGenerator();
+            String monster = game.pickMonster();
+            String treasureClassName = game.fetchTreasureClass();
+            String baseItem = game.generateBaseItem(treasureClassName);
+            int baseStats = game.generateBaseStats(baseItem);
+            String fullName = game.generateAffix(baseItem)[0];
+            String additionalStats = game.generateAffix(baseItem)[1];
+            
+            System.out.println("This program kills monsters and generates loot!");
+            System.out.println("Fighting " + monster);
+            System.out.println("You have slain " + monster);
+            System.out.println(monster + " dropped:" + "\n");
+            System.out.println(fullName);
+            System.out.println("Defense: " + baseStats);
+            System.out.print(additionalStats);
+            String ans;
+            do {
+                System.out.print("Fight again [y/n]? ");
+                ans = game.scanner.nextLine().trim().toLowerCase();
+            } while (!ans.equals("y") && !ans.equals("n"));
+
+            if (ans.equals("n")) {
+                playing = false;
+            }
+        }
     }
 
     public String pickMonster() {
