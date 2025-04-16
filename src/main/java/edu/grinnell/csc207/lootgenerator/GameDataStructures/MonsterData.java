@@ -14,6 +14,7 @@ public class MonsterData {
     
     public MonsterData(String DATA_SET) throws IOException {
         this.monsterData = new ArrayList<>();
+        this.size = 0;
         Scanner text = new Scanner(new File(DATA_SET + "/monstats.txt"));
         while (text.hasNextLine()) {
             String line = text.nextLine();

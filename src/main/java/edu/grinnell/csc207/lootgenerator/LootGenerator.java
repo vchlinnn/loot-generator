@@ -40,8 +40,9 @@ public class LootGenerator {
             String treasureClassName = game.fetchTreasureClass();
             String baseItem = game.generateBaseItem(treasureClassName);
             int baseStats = game.generateBaseStats(baseItem);
-            String fullName = game.generateAffix(baseItem)[0];
-            String additionalStats = game.generateAffix(baseItem)[1];
+            String[] result = game.generateAffix(baseItem);
+            String fullName = result[0];
+            String additionalStats = result[1];
             
             System.out.println("This program kills monsters and generates loot!");
             System.out.println("Fighting " + monster);
@@ -49,7 +50,7 @@ public class LootGenerator {
             System.out.println(monster + " dropped:" + "\n");
             System.out.println(fullName);
             System.out.println("Defense: " + baseStats);
-            System.out.print(additionalStats);
+            System.out.print("addStats " + additionalStats);
             String ans;
             do {
                 System.out.print("Fight again [y/n]? ");
@@ -91,7 +92,7 @@ public class LootGenerator {
 
     public String[] generateAffix(String baseItem){
         String additionalStats = "";
-        if (random.nextInt(1) == 0) { // yes prefix
+        if (random.nextInt(2) == 0) { // yes prefix
             // Prefix + baseitem
             int prefixRand = random.nextInt(prefixData.getSize());
             String prefix = prefixData.getAffix(prefixRand);
@@ -102,7 +103,8 @@ public class LootGenerator {
             additionalStats = value + " " + stats + "\n";
         }
 
-        if (random.nextInt(1) == 0) { // yes suffix
+        System.out.println("addStats after prefix is " + additionalStats);
+        if (random.nextInt(2) == 0) { // yes suffix
             // Suffix + baseitem
             int suffixRand = random.nextInt(suffixData.getSize());
             String suffix = suffixData.getAffix(suffixRand);

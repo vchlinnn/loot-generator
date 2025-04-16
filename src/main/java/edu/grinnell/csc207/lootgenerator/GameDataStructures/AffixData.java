@@ -15,6 +15,7 @@ public class AffixData {
     
     public AffixData(String dataPath) throws IOException {
         this.affixData = new ArrayList<>();
+        this.size = 0;
         Scanner text = new Scanner(new File(dataPath));
         while (text.hasNextLine()) {
             String line = text.nextLine();
