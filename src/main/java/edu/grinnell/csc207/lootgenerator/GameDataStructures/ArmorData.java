@@ -10,6 +10,12 @@ import java.util.Scanner;
 public class ArmorData {
     private Map<String, Integer> armorData;
     
+    /**
+     * Constructor for the ArmorData class
+     * 
+     * @param DATA_SET the path to the dataset
+     * @throws IOException if there is an error reading the data file
+     */
     public ArmorData(String DATA_SET) throws IOException {
         this.armorData = new HashMap<>();
         Scanner text = new Scanner(new File(DATA_SET + "/armor.txt"));
@@ -26,6 +32,11 @@ public class ArmorData {
         text.close();
     }
 
+    /**
+     * Get the base stats based on the armor name
+     * 
+     * @return the base stats of the armor
+     */
     public int getBaseStats(String armorName){ 
         return armorData.get(armorName);
     }

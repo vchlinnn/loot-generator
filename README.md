@@ -4,6 +4,8 @@ Authors: Linh Vu
 
 ## Resources
 
+- IDE: VSCode
+- Java 23
 - https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
 - Project 2 Speed Reader instruction for using the Scanner class to read in files
 - https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html

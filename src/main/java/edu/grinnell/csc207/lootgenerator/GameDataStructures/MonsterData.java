@@ -12,6 +12,12 @@ public class MonsterData {
     private List<Monster> monsterData;
     private int size;
     
+    /**
+     * Constructor for the MonsterData class
+     * 
+     * @param DATA_SET the path to the dataset
+     * @throws IOException if there is an error reading the data file
+     */
     public MonsterData(String DATA_SET) throws IOException {
         this.monsterData = new ArrayList<>();
         this.size = 0;
@@ -31,14 +37,31 @@ public class MonsterData {
         text.close();
     }
 
+    /**
+     * Get the monster name at the specified index
+     * 
+     * @param index the index of the monster
+     * @return the monster name
+     */
     public String getMonsterName(int index){
         return monsterData.get(index).getMonsterClass();
     }
 
+    /**
+     * Get the treasure class name at the specified index
+     * 
+     * @param index the index of the monster
+     * @return the treasure class name
+     */
     public String getTreasureClassName(int index){
         return monsterData.get(index).getTreasureClass();
     }
     
+    /**
+     * Get the current size of the monster data
+     * 
+     * @return the size of the monster data
+     */
     public int getSize(){
         return size;
     }
