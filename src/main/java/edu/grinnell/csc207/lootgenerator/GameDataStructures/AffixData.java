@@ -9,6 +9,10 @@ import edu.grinnell.csc207.lootgenerator.GameObjects.Affix;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * class AffixData
+ * This class is responsible for reading and storing affix data from a file
+ */
 public class AffixData {
     private List<Affix> affixData;
     private int size;
@@ -41,7 +45,7 @@ public class AffixData {
      * @param index the index of the affix
      * @return the affix name
      */
-    public String getAffix(int index){
+    public String getAffix(int index) {
         return affixData.get(index).getAffix();
     }
 
@@ -51,7 +55,7 @@ public class AffixData {
      * @param index the index of the affix
      * @return the statistic text
      */
-    public String getStatisticsText(int index){
+    public String getStatisticsText(int index) {
         return affixData.get(index).getStatisticText();
     }
     
@@ -61,7 +65,7 @@ public class AffixData {
      * @param index the index of the affix
      * @return the random value
      */
-    public int getValue(int index){
+    public int getValue(int index) {
         return affixData.get(index).getValue();
     }
 
@@ -70,7 +74,7 @@ public class AffixData {
      * 
      * @return the size of the affix data
      */
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 }

@@ -8,6 +8,10 @@ import java.io.IOException;
 
 import edu.grinnell.csc207.lootgenerator.GameObjects.Monster;
 
+/**
+ * class MonsterData
+ * This class is responsible for reading and storing monster data from a file
+ */
 public class MonsterData {
     private List<Monster> monsterData;
     private int size;
@@ -15,13 +19,13 @@ public class MonsterData {
     /**
      * Constructor for the MonsterData class
      * 
-     * @param DATA_SET the path to the dataset
+     * @param dataSet the path to the dataset
      * @throws IOException if there is an error reading the data file
      */
-    public MonsterData(String DATA_SET) throws IOException {
+    public MonsterData(String dataSet) throws IOException {
         this.monsterData = new ArrayList<>();
         this.size = 0;
-        Scanner text = new Scanner(new File(DATA_SET + "/monstats.txt"));
+        Scanner text = new Scanner(new File(dataSet + "/monstats.txt"));
         while (text.hasNextLine()) {
             String line = text.nextLine();
             String[] words = line.split("\t");
@@ -43,7 +47,7 @@ public class MonsterData {
      * @param index the index of the monster
      * @return the monster name
      */
-    public String getMonsterName(int index){
+    public String getMonsterName(int index) {
         return monsterData.get(index).getMonsterClass();
     }
 
@@ -53,7 +57,7 @@ public class MonsterData {
      * @param index the index of the monster
      * @return the treasure class name
      */
-    public String getTreasureClassName(int index){
+    public String getTreasureClassName(int index) {
         return monsterData.get(index).getTreasureClass();
     }
     
@@ -62,7 +66,7 @@ public class MonsterData {
      * 
      * @return the size of the monster data
      */
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 }

@@ -2,6 +2,10 @@ package edu.grinnell.csc207.lootgenerator.GameObjects;
 
 import java.util.Random;
 
+/**
+ * Affix class represents an affix in the game with its name, statistic text, and value range.
+ * It is used to store and retrieve information about affixes.
+ */
 public class Affix {
     private String affix;
     private String statisticText;
@@ -16,7 +20,7 @@ public class Affix {
      * @param mod1min       the minimum value of the affix
      * @param mod1max       the maximum value of the affix
      */
-    public Affix(String affix, String statisticText, int mod1min, int mod1max){
+    public Affix(String affix, String statisticText, int mod1min, int mod1max) {
         this.affix = affix;
         this.statisticText = statisticText;
         this.mod1min = mod1min;
@@ -27,7 +31,7 @@ public class Affix {
      * Get the affix name
      * @return the affix name
      */
-    public String getAffix(){
+    public String getAffix() {
         return affix;
     }
 

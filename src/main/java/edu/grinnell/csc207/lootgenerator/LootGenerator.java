@@ -32,7 +32,7 @@ public class LootGenerator {
      * 
      * @throws IOException if there is an error reading the data files
      */
-    public LootGenerator() throws IOException{
+    public LootGenerator() throws IOException {
         this.monsterData = new MonsterData(DATA_SET);
         this.treasureData = new TreasureClassData(DATA_SET);
         this.armorData = new ArmorData(DATA_SET);
@@ -106,7 +106,7 @@ public class LootGenerator {
      * @param treasureClassName the name of the treasure class
      * @return the name of the base item
      */
-    public String generateBaseItem(String treasureClassName){
+    public String generateBaseItem(String treasureClassName) {
         String item = treasureData.getTreasureDrop(treasureClassName);
 
         while (treasureData.isTreasureClass(item)) {
@@ -131,7 +131,7 @@ public class LootGenerator {
      * @param baseItem the name of the base item
      * @return an array containing the full name of the item and additional stats
      */
-    public String[] generateAffix(String baseItem){
+    public String[] generateAffix(String baseItem) {
         String additionalStats = "";
         if (random.nextInt(2) == 0) { // yes prefix
             // Prefix + baseitem

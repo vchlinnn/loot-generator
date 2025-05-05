@@ -1,5 +1,9 @@
 package edu.grinnell.csc207.lootgenerator.GameObjects;
 
+/**
+ * Armor class represents an armor item in the game with its name and defense values.
+ * It is used to store and retrieve information about armors.
+ */
 public class Armor {
     private String armor;
     private int minac;
@@ -33,6 +37,6 @@ public class Armor {
      * @return the randomly generated defense value between minac and maxac
      */
     public int getDefenseValue() {
-        return minac + (int)(Math.random() * ((maxac - minac) + 1));
+        return minac + (int) (Math.random() * ((maxac - minac) + 1));
     }
 }

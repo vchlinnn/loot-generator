@@ -7,18 +7,22 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * class ArmorData
+ * This class is responsible for reading and storing armor data from a file
+ */
 public class ArmorData {
     private Map<String, Integer> armorData;
     
     /**
      * Constructor for the ArmorData class
      * 
-     * @param DATA_SET the path to the dataset
+     * @param dataSet the path to the dataset
      * @throws IOException if there is an error reading the data file
      */
-    public ArmorData(String DATA_SET) throws IOException {
+    public ArmorData(String dataSet) throws IOException {
         this.armorData = new HashMap<>();
-        Scanner text = new Scanner(new File(DATA_SET + "/armor.txt"));
+        Scanner text = new Scanner(new File(dataSet + "/armor.txt"));
         while (text.hasNextLine()) {
             Random random = new Random();
             String line = text.nextLine();
@@ -35,9 +39,10 @@ public class ArmorData {
     /**
      * Get the base stats based on the armor name
      * 
+     * @param armorName the name of the armor
      * @return the base stats of the armor
      */
-    public int getBaseStats(String armorName){ 
+    public int getBaseStats(String armorName) { 
         return armorData.get(armorName);
     }
 }
