@@ -16,4 +16,4 @@ Authors: Linh Vu
 
 ## Revision Log
 
-- (_TODO: fill in your changes to your project here!_)
+- Fix styling issues
